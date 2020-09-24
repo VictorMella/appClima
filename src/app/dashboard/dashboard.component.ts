@@ -29,11 +29,11 @@ export class DashboardComponent implements OnInit {
         this.temperatura = item.main.temp - 273.15;
         this.sensacion = item.main.feels_like - 273.15;
         this.humedad = item.main.humidity;
-        this.resultadoCiudad = item.name
+        this.resultadoCiudad = item.name;
         this.clima = this.transfomarTextoClima(item.weather[0].description);
         this.query = true;
         this.loading = false;
-        this.ciudad = ''
+        this.ciudad = '';
       },
       (err) => {
         this.loading = false;
