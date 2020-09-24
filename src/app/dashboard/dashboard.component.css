@@ -1,0 +1,28 @@
+img{
+    width: 200px;
+}
+
+.imgClima{
+    text-align:center ;
+}
+
+input, input[placeholder]{
+    text-align: center;
+}
+
+.card-title{
+    text-align: center;
+}
+
+@media(max-width: 500px) {    
+    .card {
+        margin: 5px;
+    }
+    .input {
+        margin: 5px;
+    }
+    .button{
+        margin: 5px;
+    }
+   
+  }
