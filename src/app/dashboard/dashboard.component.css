@@ -52,5 +52,26 @@ input:nth-child(2){
     .button{
         margin: 5px;
     }
+
+    .grid2 ul{
+        background-color: white;
+        position: absolute;
+        top: 112px;
+        z-index: 99999999999;
+        width: 91%;
+        box-shadow: 0px 0px 5px #555;
+        cursor: pointer;
+        padding-left: 0px;
+        text-align: center;
+        border-radius: 5px;
+    }
+    .grid2 ul li{
+        list-style:none;
+        padding: 5px 
+        }  
+    .grid2 ul li:hover{
+        background:#ccc 
+    }
+    
    
-  }
+}
