@@ -6,8 +6,35 @@ img{
     text-align:center ;
 }
 
+.grid2{
+    position: relative;
+}  
+.grid2 ul{
+    background-color: white;
+    position: absolute;
+    top: 112px;
+    z-index: 99999999999;
+    width: 95%;
+    box-shadow: 0px 0px 5px #555;
+    cursor: pointer;
+    padding-left: 0px;
+    text-align: center;
+}
+.grid2 ul li{
+    list-style:none;
+    padding: 5px 
+    }  
+.grid2 ul li:hover{
+    background:#ccc 
+}
+
+
 input, input[placeholder]{
     text-align: center;
+}
+
+input:nth-child(2){
+    margin-top: 10px;
 }
 
 .card-title{

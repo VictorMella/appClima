@@ -3,10 +3,18 @@
         <div class="col-lg-3 col-sm-12 col-xs-12 imgClima">
             <img src="./assets/img/clima.png" alt="">
         </div>
-        <div class="col-lg-6 col-sm-12 col-xs-12" >
+        <div class="col-lg-6 col-sm-12 col-xs-12 grid2">
             <input type="text" placeholder="Nombre de la ciudad" class="form-control form-control-lg"
                 [(ngModel)]="ciudad">
-            <button class="btn btn-primary btn-block btn-lg mt-4" (click)="getWeather()" [disabled]="!ciudad"> Obtener clima</button>
+            <input type="text" placeholder="Nombre del país" class="form-control form-control-lg"
+            [(ngModel)]="paisName" (keypress)="onKeyPress()">
+                <ul *ngIf="paises.length > 0">
+                    <li *ngFor="let pais of paises"(click)="getNamePais(pais)">
+                      <span >{{pais.Name}}</span>
+                    </li>
+                  </ul> 
+            <button class="btn btn-primary btn-block btn-lg mt-4" (click)="getWeather()" [disabled]="!ciudad"> Obtener
+                clima</button>
 
             <app-loading *ngIf="loading"></app-loading>
             <br>
@@ -14,7 +22,7 @@
                 <div class="card-body">
                     <h5 class="card-title">El clima para {{resultadoCiudad}} es</h5>
                     <p>Temperatura actual: <b>{{temperatura | number:'1.2-2'}}° </b></p>
-                    <p>Senzación térmica: <b> {{sensacion | number:'1.2-2'}}° </b></p>                
+                    <p>Senzación térmica: <b> {{sensacion | number:'1.2-2'}}° </b></p>
                     <p>Humedad:<b> {{humedad | number:'1.1-1'}}% </b></p>
                     <p>Clima: <b> {{clima}} </b> </p>
                 </div>

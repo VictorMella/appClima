@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ClimaService } from '../services/clima.service';
-
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -8,6 +7,8 @@ import { ClimaService } from '../services/clima.service';
 })
 export class DashboardComponent implements OnInit {
   ciudad = '';
+  paisName = '';
+  codigoPais = '';
   weather: [] = [];
   query = false;
   temperatura: number;
@@ -16,15 +17,19 @@ export class DashboardComponent implements OnInit {
   clima: string;
   resultadoCiudad: string;
   loading = false;
+  paises = []; 
+  lsPaises = [];
 
   constructor(private climaService: ClimaService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  this.getPaises()
+  }
 
   getWeather() {
     this.loading = true;
     this.query = false;
-    this.climaService.getClima(this.ciudad).subscribe(
+    this.climaService.getClima(this.ciudad, this.codigoPais).subscribe(
       (item) => {
         this.temperatura = item.main.temp - 273.15;
         this.sensacion = item.main.feels_like - 273.15;
@@ -34,6 +39,7 @@ export class DashboardComponent implements OnInit {
         this.query = true;
         this.loading = false;
         this.ciudad = '';
+        this.paisName = '';
       },
       (err) => {
         this.loading = false;
@@ -41,11 +47,31 @@ export class DashboardComponent implements OnInit {
         alert('No se ha encontrado esa ciudad');
         this.query = false;
         this.ciudad = '';
+        this.paisName = '';
       }
     );
   }
 
+  getNamePais(pais) {
+    this.codigoPais = pais.Code;
+    this.paisName = pais.Name;
+    this.paises = [];
+  }
+
   transfomarTextoClima(clima) {
     return clima.charAt(0).toUpperCase() + clima.substr(1).toLowerCase();
+  }
+
+  getPais() {
+    this.paises = this.lsPaises.filter((item) =>
+      item.Name.includes(this.transfomarTextoClima(this.paisName))
+    );
+  }
+  onKeyPress(): void {
+    this.getPais();
+  }
+
+  getPaises(){
+      this.lsPaises = this.climaService.getPaises();
   }
 }
