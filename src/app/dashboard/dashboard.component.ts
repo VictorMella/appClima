@@ -69,6 +69,7 @@ export class DashboardComponent implements OnInit {
     );
   }
   onKeyPress(): void {
+    alert(this.ciudad)
     this.getPais();
   }
 
