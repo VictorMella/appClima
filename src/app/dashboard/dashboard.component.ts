@@ -63,6 +63,7 @@ export class DashboardComponent implements OnInit {
   }
 
   getPais() {
+    this.lsPaises = this.climaService.getPaises();
     this.paises = this.lsPaises.filter((item) =>
       item.Name.includes(this.transfomarTextoClima(this.paisName))
     );
