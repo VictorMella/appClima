@@ -19,6 +19,7 @@ img{
     cursor: pointer;
     padding-left: 0px;
     text-align: center;
+    border-radius: 5px;
 }
 .grid2 ul li{
     list-style:none;
