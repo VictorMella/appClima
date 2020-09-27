@@ -7,7 +7,7 @@
             <input type="text" placeholder="Nombre de la ciudad" class="form-control form-control-lg"
                 [(ngModel)]="ciudad">
             <input type="text" placeholder="Nombre del país" class="form-control form-control-lg"
-            [(ngModel)]="paisName" (keypress)="onKeyPress()">
+            [(ngModel)]="paisName" (keyup)="onKeyPress()">
                 <ul *ngIf="paises.length > 0">
                     <li *ngFor="let pais of paises"(click)="getNamePais(pais)">
                       <span >{{pais.Name}}</span>
