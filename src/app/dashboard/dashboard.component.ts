@@ -40,6 +40,7 @@ export class DashboardComponent implements OnInit {
         this.loading = false;
         this.ciudad = '';
         this.paisName = '';
+        this.codigoPais = '';
       },
       (err) => {
         this.loading = false;
@@ -48,6 +49,7 @@ export class DashboardComponent implements OnInit {
         this.query = false;
         this.ciudad = '';
         this.paisName = '';
+        this.codigoPais = '';
       }
     );
   }
@@ -69,7 +71,6 @@ export class DashboardComponent implements OnInit {
     );
   }
   onKeyPress(): void {
-  
     this.getPais();
   }
 
