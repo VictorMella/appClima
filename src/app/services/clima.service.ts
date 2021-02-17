@@ -1,15 +1,36 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment'
 
 @Injectable({
   providedIn: 'root',
 })
 export class ClimaService {
-  url = 'http://api.openweathermap.org/data/2.5/weather?&appid=';
-  key = '8f8161f7df9f65b903d1b85adc323bff';
-  newUrl = 'http://api.openweathermap.org/data/2.5/weather?&appid=';
+  url = environment.url
+  key = environment.key
+  newUrl = environment.newUrl
   estado = '';
+
+  constructor(private http: HttpClient) {}
+
+  getClima(ciudad: string, pais: string): Observable<any> {
+    return this.http.get(
+      this.newUrl +
+        this.key +
+        '&q=' +
+        ciudad +
+        ',' +
+        this.estado +
+        ',' +
+        pais +
+        '&lang=es'
+    );
+  }
+
+  getPaises(){
+    return this.paises;
+  }
 
   paises = [
     { Code: 'AE', Name: 'Emiratos Árabes Unidos' },
@@ -254,23 +275,4 @@ export class ClimaService {
     { Code: 'ZA', Name: 'Sudáfrica' },
   ];
 
-  constructor(private http: HttpClient) {}
-
-  getClima(ciudad: string, pais: string): Observable<any> {
-    return this.http.get(
-      this.newUrl +
-        this.key +
-        '&q=' +
-        ciudad +
-        ',' +
-        this.estado +
-        ',' +
-        pais +
-        '&lang=es'
-    );
-  }
-
-  getPaises(){
-    return this.paises;
-  }
 }
